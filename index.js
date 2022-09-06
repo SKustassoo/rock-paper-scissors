@@ -94,7 +94,7 @@ function game() {
     }
 };
 
-
-
-game();
+const cardRock = document.querySelector(".rock");
+const cardPaper = document.querySelector(".paper");
+const cardScissor = document.querySelector(".scissor");
 
