@@ -4,7 +4,8 @@ const cardScissor = document.getElementById("scissor");
 const theNewGameButton = document.getElementById("NewGameButton")
 
 let gamesPlayed = 0;
-
+let playerWins= 0;
+let computerWins = 0;
 
 
 
@@ -98,7 +99,7 @@ function playRound(playerChoice, computerChoice) {
     setAward(outcome);
     if (gamesPlayed == 5) {
         theNewGameButton.classList.add("button-cta");
-        callTheWinner(outcome);
+        callTheWinner(playerWins, computerWins);
     }
 };
 
@@ -116,12 +117,14 @@ function setAward(gameOutcome){
         const li = document.createElement("li");
         li.setAttribute("class", "award");
         playerAwards[0].appendChild(li);
+        playerWins++;
 
     }else {
         const computerAwards = document.getElementsByClassName("computer-award-list");
         const li = document.createElement("li");
         li.setAttribute("class", "award");
         computerAwards[0].appendChild(li);
+        computerWins++;
     };
 
 };
@@ -136,21 +139,18 @@ function clearAwards(){
     children.forEach((child) => {child.innerHTML=""});
 }
 
-function callTheWinner(theWInnerIs){
-    let winnerName = "";
+function callTheWinner(playerWins, computerWins){
+    const shoutOut = document.createElement("div");
+    const quotePosition = document.getElementsByClassName('game-outcome');
 
-    switch(theWInnerIs){
-        case("0"):
-            winnerName = "Tie";
-        case("1"):
-            winnerName = "Player";
-        case("2"):
-            winnerName = "Computer";
+    if (playerWins>computerWins){
+        shoutOut.innerHTML = "<p>Player wins, computer lost!</p>";
+    }else if(computerWins>playerWins){
+        shoutOut.innerHTML = "<p>Computer wins, player lost!</p>";
+    }else{
+        shoutOut.innerHTML = "<p>Kinda weird outcome</p>";
     }
 
-    let shoutOut = document.createElement("p")
-    let text = document.createTextNode("This just got added");
-
-
-    document.getElementsByClassName("game-outcome").appendChild(shoutOut);
+    quotePosition[0].appendChild(shoutOut);
+    
 }

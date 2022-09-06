@@ -52,6 +52,9 @@ header {
     justify-content: space-between;
 }
 
+.game-outcome{
+    width: 300px;
+}
 
 
 /*--------------------------------CARDS-----------*/
@@ -64,6 +67,15 @@ header {
     border: var(--dark-bg-accent) 1px solid;
 
     transition: 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-card img{
+
 }
 
 .game-card:hover {
@@ -74,6 +86,22 @@ header {
   }
 
 
+
+  .game-card-pc{
+    width: 125px;
+    height: 125px;
+    background-color: var(--dark-bg-accent);
+    border-radius: 8px;
+    margin: 16px 0px;
+    border: var(--dark-bg-accent) 1px solid;
+
+    transition: 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /*---------------------------------GAME-CONETENT--*/
