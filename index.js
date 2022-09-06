@@ -1,6 +1,27 @@
+const cardRock = document.getElementById('rock');
+const cardPaper = document.getElementById("paper");
+const cardScissor = document.getElementById("scissor");
+
+
+
+
+
+cardRock.addEventListener("click", function() {
+    console.log(playRound("rock", getComputerChoice()));
+});
+
+cardPaper.addEventListener("click", function() {
+    console.log(playRound("paper", getComputerChoice()));
+    });
+
+cardScissor.addEventListener("click", function() {
+    console.log(playRound("scissor", getComputerChoice()));
+});
+
+
 function getComputerChoice() {
     let choice = Math.random();
-    let answer;
+    let answer = "";
 
     if (choice <= 0.33){
         answer = "rock"
@@ -10,11 +31,6 @@ function getComputerChoice() {
         answer = "scissor"
     }
 
-    return answer;
-};
-
-function getPlayerChoice() {
-    let answer = prompt("Rock, paper, scissor?").toLowerCase();
     return answer;
 };
 
@@ -28,7 +44,7 @@ function playRound(playerChoice, computerChoice) {
             if (computerChoice == "rock"){
                 outcome = 1;
             }else if (computerChoice == "paper"){
-                outcome == 0;
+                outcome = 0;
             }else{
                 outcome = 2;
             };
@@ -39,7 +55,7 @@ function playRound(playerChoice, computerChoice) {
             if (computerChoice == "rock"){
                 outcome = 2;
             }else if (computerChoice == "paper"){
-                outcome == 1;
+                outcome = 1;
             }else{
                 outcome = 0;
             };
@@ -50,7 +66,7 @@ function playRound(playerChoice, computerChoice) {
             if (computerChoice == "rock"){
                 outcome = 0;
             }else if (computerChoice == "paper"){
-                outcome == 2;
+                outcome = 2;
             }else{
                 outcome = 1;
             };
@@ -60,41 +76,39 @@ function playRound(playerChoice, computerChoice) {
         default:
             outcome = 0;
     };
-    return outcome;
+
+    setAward(outcome);
 };
+
+function setAward(gameOutcome){
+    if (gameOutcome == 0){
+        const tieAwards = document.getElementsByClassName("ties-award-list");
+        const li = document.createElement("li");
+        li.setAttribute("class", "award");
+
+        tieAwards[0].appendChild(li);
+
+    }else if(gameOutcome == 1){
+        const playerAwards = document.getElementsByClassName("player-award-list");
+        const li = document.createElement("li");
+        li.setAttribute("class", "award");
+
+        playerAwards[0].appendChild(li);
+
+    }else {
+        const computerAwards = document.getElementsByClassName("computer-award-list");
+        const li = document.createElement("li");
+        li.setAttribute("class", "award");
+        
+        computerAwards[0].appendChild(li);
+
+    };
+};
+
 
 function game() {
     let gamesCounter = 0;
     let playerWins = 0;
     let computerWins = 0;
     var singleGameOutcome = 0;
-
-    for (let i = 0; i < 5; i++) {
-
-        singleGameOutcome = playRound(getPlayerChoice(), getComputerChoice());
-
-        if (singleGameOutcome == "1"){
-            playerWins++;
-            gamesCounter++;
-
-        }else if (singleGameOutcome == "2"){
-            computerWins++;
-            gamesCounter++;
-        } else {
-            gamesCounter++;
-        }
-    }
-
-    if(playerWins > computerWins){
-        console.log("Player wins " +playerWins+" / "+computerWins);
-    }else if(playerWins < computerWins){
-        console.log("computer wins "+computerWins+" / "+playerWins);
-    }else{
-        console.log("now this is awkward, tie I guess? computer: "+computerWins+", player: "+playerWins);
-    }
 };
-
-const cardRock = document.querySelector(".rock");
-const cardPaper = document.querySelector(".paper");
-const cardScissor = document.querySelector(".scissor");
-

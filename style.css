@@ -68,7 +68,7 @@ header {
 
 .game-card:hover {
     border: #ffbe0b 1px 0px solid;
-    box-shadow: 0px 5px 10px #ffbe0b;
+    box-shadow: 0px 2px 6px #ffbe0b;
     color: #fff;
     transform: translateY(-3px);
   }
@@ -79,19 +79,22 @@ header {
 /*---------------------------------GAME-CONETENT--*/
 
 
-.award-list{
+.computer-award-list, .ties-award-list, .player-award-list{
     display: flex;
     flex-direction: row;
 }
 
+ul{
+    padding: 0px;
+    height: 35px;
+}
+
 .award {
+    list-style: none;
     height: 20px;
     width: 20px;
     border-radius: 10px;
-    background-color: var(--dark-bg-accent);
-}
-
-.award:hover {
+    margin-right: 5px;
     background-color: #ffbe0b;
 }
 
@@ -100,6 +103,7 @@ header {
 .game-end{
     align-self: center;
 }
+
 /*----------------------------------BUTTONS-------*/
 .active-button{
     background-color: var(--accent-color);

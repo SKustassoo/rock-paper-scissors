@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>R-P-C</title>
         <link rel="stylesheet" href="style.css">
-        <!-- <script src="index.js"></script> -->
+        <script src="index.js" defer></script>
     </head>
     
     <body>
@@ -17,42 +17,27 @@
 
             <div class="game-content">
                 <div class="player-cards">
-                    <div class="game-card" id="rock">rock</div>
-                    <div class="game-card" id="paper">paper</div>
-                    <div class="game-card" id="scissor">scissors</div>
+                    <div id="rock" class="game-card" >rock</div>
+                    <div id="paper" class="game-card" >paper</div>
+                    <div id="scissor" class="game-card" >scissors</div>
                 </div>
                 <div class="game-outcome">
                     <div>
                         <p>Player wins</p>
-                        <div class="award-list">
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                        </div>
+                        <ul class="player-award-list">
+                        </ul>
                     </div>
 
                     <div>
                         <p>Computer wins</p>
-                        <div class="award-list">
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                        </div>
+                        <ul class="computer-award-list">
+                        </ul>
                     </div>
 
                     <div>
                         <p>Ties</p>
-                        <div class="award-list">
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                            <div class="award"></div>
-                        </div>
+                        <ul class="ties-award-list">
+                        </ul>
                     </div>
 
                 </div>
