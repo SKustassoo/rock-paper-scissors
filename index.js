@@ -1,22 +1,39 @@
 const cardRock = document.getElementById('rock');
 const cardPaper = document.getElementById("paper");
 const cardScissor = document.getElementById("scissor");
+const theNewGameButton = document.getElementById("NewGameButton")
 
+let gamesPlayed = 0;
 
 
 
 
 cardRock.addEventListener("click", function() {
-    console.log(playRound("rock", getComputerChoice()));
+    if(gamesPlayed < 5){
+        playRound("rock", getComputerChoice());
+    }
+    
 });
 
 cardPaper.addEventListener("click", function() {
-    console.log(playRound("paper", getComputerChoice()));
-    });
+    if(gamesPlayed < 5){
+    playRound("paper", getComputerChoice());
+    }
+});
 
 cardScissor.addEventListener("click", function() {
-    console.log(playRound("scissor", getComputerChoice()));
+   if(gamesPlayed < 5) {
+    playRound("scissor", getComputerChoice());
+    }
+
 });
+
+theNewGameButton.addEventListener("click", function(){
+    resetGame();
+    clearAwards();
+    theNewGameButton.classList.remove("button-cta");
+});
+
 
 
 function getComputerChoice() {
@@ -77,38 +94,63 @@ function playRound(playerChoice, computerChoice) {
             outcome = 0;
     };
 
+    gamesPlayed++;
     setAward(outcome);
+    if (gamesPlayed == 5) {
+        theNewGameButton.classList.add("button-cta");
+        callTheWinner(outcome);
+    }
 };
 
+
 function setAward(gameOutcome){
+    
     if (gameOutcome == 0){
         const tieAwards = document.getElementsByClassName("ties-award-list");
         const li = document.createElement("li");
         li.setAttribute("class", "award");
-
         tieAwards[0].appendChild(li);
 
     }else if(gameOutcome == 1){
         const playerAwards = document.getElementsByClassName("player-award-list");
         const li = document.createElement("li");
         li.setAttribute("class", "award");
-
         playerAwards[0].appendChild(li);
 
     }else {
         const computerAwards = document.getElementsByClassName("computer-award-list");
         const li = document.createElement("li");
         li.setAttribute("class", "award");
-        
         computerAwards[0].appendChild(li);
-
     };
+
 };
 
 
-function game() {
-    let gamesCounter = 0;
-    let playerWins = 0;
-    let computerWins = 0;
-    var singleGameOutcome = 0;
-};
+function resetGame(){
+    gamesPlayed = 0;
+}
+
+function clearAwards(){
+    const children = [...document.getElementsByTagName('ul')];
+    children.forEach((child) => {child.innerHTML=""});
+}
+
+function callTheWinner(theWInnerIs){
+    let winnerName = "";
+
+    switch(theWInnerIs){
+        case("0"):
+            winnerName = "Tie";
+        case("1"):
+            winnerName = "Player";
+        case("2"):
+            winnerName = "Computer";
+    }
+
+    let shoutOut = document.createElement("p")
+    let text = document.createTextNode("This just got added");
+
+
+    document.getElementsByClassName("game-outcome").appendChild(shoutOut);
+}
